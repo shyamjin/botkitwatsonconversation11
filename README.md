@@ -8,11 +8,11 @@ Press this button to deploy a clone of this repo to Bluemix
 [![Deploy to Bluemix](https://bluemix.net/deploy/button.png)](https://bluemix.net/deploy?repository=https://github.com/Rich-Edwards/botkit-watson-conversation-multibot)
 
 ##Configuration
-![Deploy on Bluemix](https://raw.githubusercontent.com/Rich-Edwards/botkit-watson-conversation-multibot/img/Deploy on Bluemix.jpg)
+![Deploy on Bluemix](https://github.com/Rich-Edwards/botkit-watson-conversation-multibot/blob/master/img/Deploy%20on%20Bluemix.jpg)
 
 After successful deployment click the `EDIT CODE` button to configure the applciation and highlight the .env file to configure the application and add service credentials.
 
-![Edit Code](https://raw.githubusercontent.com/Rich-Edwards/botkit-watson-conversation-multibot/img/Edit .env file.jpg)
+![Edit Code](https://github.com/Rich-Edwards/botkit-watson-conversation-multibot/blob/master/img/Edit%20.env%20file.jpg)
 
 In the section `#UNCOMMENT SERVICES TO CONNECT TO` Uncomment (by removing the # at the start of the line) for the services you want to connect your Conversation workspace to. 
 eg: If you would like to use Slack and Facebook Messenger, you must add the following lines in your .env file:
