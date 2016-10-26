@@ -3,11 +3,16 @@
 
 This document describes how to set up a sample Express app on Bluemix which connects the IBM Watson Conversation Service API to Slack, Facebook, and Twilio. This is a fork of the multi-channel example app from the more comprehensive [botkit-middleware repo](https://github.com/watson-developer-cloud/botkit-middleware).
 
-DEPLOY TO BLUEMIX BUTTON:  
+##Deploying the application:
+Press this button to deploy a clone of this repo to Bluemix  
 [![Deploy to Bluemix](https://bluemix.net/deploy/button.png)](https://bluemix.net/deploy?repository=https://github.com/Rich-Edwards/botkit-watson-conversation-multibot)
 
 ##Configuration
-The only modification requried to this code to get the service connected is in the .env file.
+![alt tag](https://raw.githubusercontent.com/username/projectname/branch/path/to/img.png)
+
+After successful deployment click the `EDIT CODE` button to configure the applciation and highlight the .env file to configure the application and add service credentials.
+
+![alt tag](https://raw.githubusercontent.com/username/projectname/branch/path/to/img.png)
 
 In the section `#UNCOMMENT SERVICES TO CONNECT TO` Uncomment (by removing the # at the start of the line) for the services you want to connect your Conversation workspace to. 
 eg: If you would like to use Slack and Facebook Messenger, you must add the following lines in your .env file:
