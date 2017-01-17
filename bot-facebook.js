@@ -1,3 +1,4 @@
+/*eslint-env node, botkit*/
 /**
  * Copyright 2016 IBM Corp. All Rights Reserved.
  *
@@ -14,7 +15,7 @@
  * limitations under the License.
  */
 
-var Botkit = require('botkit');
+var Botkit = require("botkit");
 
 var controller = Botkit.facebookbot({
   access_token: process.env.FB_ACCESS_TOKEN,
@@ -22,15 +23,15 @@ var controller = Botkit.facebookbot({
 });
 
 var bot = controller.spawn();
-controller.hears('(.*)', 'message_received', function(bot, message) {
+controller.hears("(.*)", "message_received", function(bot, message) {
 	var attachment = String(message.watsonData.output.text);
-	if(attachment.indexOf('"{') === 0)
+	if(attachment.indexOf("\"{") === 0)
   	{
   		bot.reply(message, {attachment: JSON.parse(attachment),});
 	}
 	else
   	{
-  		bot.reply(message, message.watsonData.output.text.join('\n'));
+  		bot.reply(message, message.watsonData.output.text.join("\n"));
   	}
 });
 
