@@ -41,10 +41,10 @@ module.exports = function(app) {
   middleware.before = function(message, conversationPayload, callback) {
     callback(null, conversationPayload);
     console.log('Facebook Before');
-  }
+  };
 
   middleware.after = function(message, conversationResponse, callback) {
-    callback(null, conversationResponse);
     console.log('Facebook After');
-  }
+    callback(null, conversationResponse);
+  };
 };

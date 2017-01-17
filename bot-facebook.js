@@ -23,7 +23,15 @@ var controller = Botkit.facebookbot({
 
 var bot = controller.spawn();
 controller.hears('(.*)', 'message_received', function(bot, message) {
-  bot.reply(message, message.watsonData.output.text.join('\n'));
+	var attachment = String(message.watsonData.output.text);
+	if(attachment.indexOf('"{') === 0)
+  	{
+  		bot.reply(message, {attachment: JSON.parse(attachment),});
+	}
+	else
+  	{
+  		bot.reply(message, message.watsonData.output.text.join('\n'));
+  	}
 });
 
 module.exports.controller = controller;
