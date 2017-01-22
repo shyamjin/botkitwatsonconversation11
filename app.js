@@ -1,4 +1,4 @@
-/*eslint-env dotenv, botkit-middleware-watson, node*/
+/*eslint-env node, node, dotenv, botkit-middleware-watson*/
 /**
  * Copyright 2016 IBM Corp. All Rights Reserved.
  *
@@ -44,14 +44,12 @@ module.exports = function(app) {
    */
   middleware.before = function(message, conversationPayload, callback) {
     callback(null, conversationPayload);
-    console.log("Facebook Before");
   };
 
   /**
    * @callback
    */
   middleware.after = function(message, conversationResponse, callback) {
-    console.log("Facebook After");
     callback(null, conversationResponse);
   };
 };

@@ -1,4 +1,4 @@
-/*eslint-env node, botkit*/
+/*eslint-env node, botkit, nodemailer*/
 /**
  * Copyright 2016 IBM Corp. All Rights Reserved.
  *
@@ -16,6 +16,7 @@
  */
 
 var Botkit = require("botkit");
+var nodemailer = require("nodemailer");
 
 var controller = Botkit.facebookbot({
   access_token: process.env.FB_ACCESS_TOKEN,
@@ -24,6 +25,24 @@ var controller = Botkit.facebookbot({
 
 var bot = controller.spawn();
 controller.hears("(.*)", "message_received", function(bot, message) {
+	if(message.watsonData.context.customerid)
+	{
+		// in case your using gmail as your mail serivce.
+		var transporter = nodemailer.createTransport({
+			service: "Gmail",
+			auth: {
+			    user: "mishraab01@gmail.com",
+			    pass: "Amdocs@1"
+			}
+		});
+		transporter.sendMail({
+		    from: "mishraab01@gmail.com",
+		    to: "KrrishXL@amdocs.com",
+		    subject: "Krrish_Mail_Trigger_Demo",
+		    text: "hello world!"
+		});
+		console.log("Send Mail");
+	}
 	var attachment = String(message.watsonData.output.text);
 	if(attachment.indexOf("\"{") === 0)
   	{
