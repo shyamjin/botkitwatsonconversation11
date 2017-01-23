@@ -43,6 +43,7 @@ module.exports = function(app) {
    * @callback
    */
   middleware.before = function(message, conversationPayload, callback) {
+  	
     callback(null, conversationPayload);
   };
 

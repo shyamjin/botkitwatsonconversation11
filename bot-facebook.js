@@ -25,9 +25,8 @@ var controller = Botkit.facebookbot({
 
 var bot = controller.spawn();
 controller.hears("(.*)", "message_received", function(bot, message) {
-	if(message.watsonData.context.customerid)
+	if(message.watsonData.context.customerid || message.watsonData.context.sendmailLiveAgent)
 	{
-		// in case your using gmail as your mail serivce.
 		var transporter = nodemailer.createTransport({
 			service: "Gmail",
 			auth: {
@@ -35,14 +34,29 @@ controller.hears("(.*)", "message_received", function(bot, message) {
 			    pass: "Amdocs@1"
 			}
 		});
-		transporter.sendMail({
-		    from: "mishraab01@gmail.com",
-		    to: "KrrishXL@amdocs.com",
-		    subject: "Krrish_Mail_Trigger_Demo",
-		    text: "hello world!"
-		});
+		if(message.watsonData.context.customerid)
+		{
+			transporter.sendMail({
+		 	   from: "mishraab01@gmail.com",
+		    	to: "KrrishXL@amdocs.com",
+		    	subject: "Krrish_Mail_Trigger_Demo",
+		    	text: "hello world!"
+			});
+			delete message.watsonData.context.customerid;
+		}
+		else
+		{
+			transporter.sendMail({
+		 	   from: "mishraab01@gmail.com",
+		    	to: "mishraab@amdocs.com,anil.kumar1@amdocs.com",
+		    	subject: "Bot flow for Live Agent",
+		    	text: "Below is the issue discribed by Customer - " + message.watsonData.context.mailText
+			});
+			delete message.watsonData.context.sendmailLiveAgent;
+		}
 		console.log("Send Mail");
 	}
+	console.log(message.watsonData.context);
 	var attachment = String(message.watsonData.output.text);
 	if(attachment.indexOf("\"{") === 0)
   	{
